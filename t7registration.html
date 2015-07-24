@@ -1,0 +1,73 @@
+<!--<?php 
+	// Connects to your Database 
+	mysql_connect("localhost", "root", "DGdragoon007") or die(mysql_error()); 
+	mysql_select_db("team7") or die(mysql_error()); 
+	//This code runs if the form has been submitted
+	if (isset($_POST['submit']))
+	{ 
+	//This makes sure they did not leave any fields blank
+		if (!$_POST['name'] | !$_POST['email'] | !$_POST['username'] | !$_POST['pass1'] | !$_POST['pass2'] )
+		{
+			echo '<body style = "background-color:#808000">';
+			die('<font color = "white"> You did not complete all of the required fields <a href=registration.php> Click Here to Sign Up</a></font>');
+		}
+	//this makes sure both passwords entered match
+
+		if ($_POST['pass'] != $_POST['pass2']) 
+		{
+			echo'<H2> <font color = "white">Registration Failed</font></H2>';
+			echo '<body style = "background-color:#808000\">';
+			die('<font color = "white" size = 4>Entered passwords did not match. <a href=registration.php> Go Back </a></font>');
+		}
+	// now we insert it into the database
+
+		$insert = "INSERT INTO Registration (name, email, username, password) VALUES ('".$_POST['name']."', '".$_POST['email']."', '".$_POST['username']."','".$_POST['pass']."')";
+		$add_member = mysql_query($insert);
+?>
+<body bgcolor="#808000">
+	
+<font color = 'white'>
+	<h1>Registration Successful!</h1>
+</font>
+</body>
+
+<?php
+}
+else
+{  ?>
+-->
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WikiEdit - Register</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="images/Icon.ico" />
+</head>
+
+<body bgcolor="#808000">
+	<img style="position:relative;left:400px;top:0px;"src="images/slide1.jpg" alt="WIKI LOGO" width="450" height="75">
+	<img style="position:relative;left:100px;top:200px;"src="images/wikilogo.png" alt="WIKI LOGO" width="100" height="100">
+	<img style="position:relative;left:0px;top:100px;"src="images/walker.jpg" alt="Walker" width="100" height="100">
+	<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post"> 
+ 		<table border="0" style="color:white;position:relative;left:450px;top:150px"> 
+ 			<tr><td colspan=2><h1>Sign Up</h1></td></tr> 	
+ 			<tr><td><font size="5">Name:</td><td><input type="text" name="name" size="30" maxlength="40"></font></td></tr> 	
+ 			<tr><td><font size="5">Email:</td><td><input type="text" name="email" size="30" value="you@email.com"></font></td></tr> 			
+			<tr><td><font size="5">Username:</td><td><input type="text" name="username" size="30" maxlength="40"></font></td></tr> 
+ 			<tr><td><font size="5">Password:</td><td><input type="password" name="pass" size="30" maxlength="40"></font></td></tr> 
+ 			<tr><td><font size="5">Confirm Password:</td><td><input type="password" name="pass2" size="30" maxlength="40"></font></td></tr> 
+ 			<tr><td colspan="3" align="right"><font size="5"><input type="submit" name="submit" value="Sign Up"></font></td></tr> 
+			<tr><br/></tr>
+ 			<tr><td colspan="3" align="right">
+			<a href="front/t7login.html" style="color:white;">
+			<font size="5"><i><font size="3">Click here for login</i></font>
+			</a>
+			</td></tr>
+ 		</table>
+ 	</form>	
+</body>
+</html>
+<!--?php>
+}
+?>-->
